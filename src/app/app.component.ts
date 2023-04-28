@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import * as microsoftTeams from '@microsoft/teams-js';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {MatExpansionModule} from '@angular/material/expansion'
 
 @Component({
   selector: 'app-root',
@@ -8,32 +10,69 @@ import * as microsoftTeams from '@microsoft/teams-js';
 })
 export class AppComponent {
   title = 'my-tab-app';
-  constructor() {
-    microsoftTeams.initialize();
-    microsoftTeams.authentication.getAuthToken({
-      successCallback: (token) => {
-        console.log('Token:', token);
-      },
-      failureCallback: (error) => {
-        console.error('SSO login failed:', error);
-      }
-    });
-    
+  isLoggedIn: boolean = false;
+  details: any
+  mobilenumber: any;
+  panelOpenState: boolean = false;
+
+  constructor(private http: HttpClient) {
   }
 
-  login(){
-    
-    microsoftTeams.authentication.authenticate({
-      // url: 'https://" + window.location.host',
-      url: 'https://a2bc-2001-4490-4c89-8792-945d-4829-eea2-1122.in.ngrok.io/',
-      // width: 600,
-      // height: 535,
-      successCallback: (result: any) => {
-        console.log('SSO login succeeded:', result);
-      },
-      failureCallback: (error: any) => {
-        console.error('SSO login failed:', error);
-      }
-    });
+  ngOnInit() {
+    microsoftTeams.app.initialize().then(() => {
+      // Check the initial theme user chose and respect it
+      microsoftTeams.app.getContext().then((context) => {
+        window.alert(JSON.stringify(context));
+        this.details = JSON.stringify(context);
+        console.log("Details", this.details)
+      }).catch((error) => {
+        window.alert(error)
+      });
+    })
   }
+
+  login() {
+    microsoftTeams.authentication
+      .getAuthToken()
+      .then((result) => {
+        console.log('Success token recieved' + result);
+        const decodedToken = this.decodeToken(result);
+        window.alert('Success token recieved.\n\n Hello!' + decodedToken);
+        this.isLoggedIn = true;
+      })
+      .catch((error) => {
+        console.log('Error getting token: ' + error);
+        window.alert('Error getting token: ' + error);
+      });
   }
+  decodeToken(result: string) {
+    throw new Error('Method not implemented.');
+
+  }
+
+  async onSubmitCall() {
+    let verifycode = this.mobilenumber;
+    console.log("mobile",verifycode)
+    if(verifycode != undefined){
+      console.log("number",this.mobilenumber)
+      const data = {
+        tnMask: verifycode
+      };
+      const apiUrl = '/Services/2.0.0/tnDetail';
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+  
+      this.http.post(`/Services/2.0.0/tnDetail`, data, { headers }).subscribe((response) => {
+        console.log(response);
+      }, (error) => {
+        console.error(error);
+      });
+    }
+    else{
+      window.alert("Please Enter the Value")
+    }
+   
+  }
+
+}
