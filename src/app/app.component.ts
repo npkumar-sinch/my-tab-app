@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {MatExpansionModule} from '@angular/material/expansion'
+export interface userOption {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -14,7 +17,13 @@ export class AppComponent {
   details: any
   mobilenumber: any;
   panelOpenState: boolean = false;
-
+  showDetails:boolean = false;
+  finaldata: any;
+  userList: userOption[] = [
+    {value: 'steak-0', viewValue: 'User'},
+    {value: 'pizza-1', viewValue: 'Admin'},
+    {value: 'tacos-2', viewValue: 'User1'}
+  ];
   constructor(private http: HttpClient) {
   }
 
@@ -64,7 +73,14 @@ export class AppComponent {
       });
   
       this.http.post(`/Services/2.0.0/tnDetail`, data, { headers }).subscribe((response) => {
-        console.log(response);
+        this.finaldata = response;
+        console.log("num",this.finaldata);
+        if(this.finaldata.userData.statusCode= "200"){
+          this.showDetails = true
+        }
+       else{
+        alert("details not found")
+       }
       }, (error) => {
         console.error(error);
       });

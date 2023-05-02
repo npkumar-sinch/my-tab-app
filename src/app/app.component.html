@@ -1,135 +1,296 @@
 <div>
-  <div>
-    <h1>Welcome to SSO Login Application </h1>
-    <button (click)="login()">Authorize</button>
+  <div class="accordianPosition">
+    <div class="accordianPosition" style="text-align: center; font-size: larger;">
+    <img style="height: 4rem;" src="../favicon.ico" alt="Avatar">
   </div>
+    <h1 class="acccenter">Welcome to SSO Login Application </h1>
+  </div>
+  <!-- <div class="accordianPosition">
+    <button (click)="login()">Authorize</button>
+  </div> -->
   <div class="space"></div>
-  <div>
-    <div>
+  <div class="accordianPosition" style="text-align: center;" *ngIf=!showDetails>
+    <div class="labelAcc">
       <label>Please Enter the Number</label>
     </div>
     <div style="height: 15px"></div>
-    <div>
-      <input class="value" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
+    <div class="labelAcc">
+      <input class="value" type="text" [(ngModel)]="mobilenumber">
     </div>
     <div style="height: 10px"></div>
-    <button (click)="onSubmitCall()">Submit</button>
+    <button class="accorButton" (click)="onSubmitCall()">Submit</button>
   </div>
+</div>
+<div *ngIf="showDetails">
+<div class="accordianPosition" >
+  <h1 class="acccenter">value </h1>
+</div>
+<div class="accordianPosition">
+  <div class="dataRow">
+    <h5 class="dataCol">RATE CENTER</h5>
+    <h5 class="dataCol">
+      STATE</h5>
+    <h5 class="dataCol">COUNTRY</h5>
+  </div>
+  <div class="dataRow1">
+    <h5 class="dataCol">Column 1</h5>
+    <h5 class="dataCol">Column 2</h5>
+    <h5 class="dataCol">Column 2</h5>
+  </div>
+
+</div>
+
+<div class="accordianPosition">
+  <h4>Features</h4>
 </div>
 
 <!-- accordian Panel Code -->
-<div>
+<div class="accordianPosition" style="margin-top: -30px !important;">
   <mat-accordion>
-    <mat-expansion-panel class="accordianStyle">
-      <mat-expansion-panel-header style="background-color: aqua;">
-        <mat-panel-title>
+    <mat-expansion-panel class="accordianStyle" hideToggle [expanded]="true">
+      <mat-expansion-panel-header style="background-color: black;">
+        <mat-panel-title class="accorLabel">
+          <span class="material-icons">expand_more</span>
           E911 Services
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>This is the primary content of the panel.</p>
+      <div class="row">
+        <mat-grid-list cols="2" rowHeight="95px" style="margin-top: -13px !important;">
+          <mat-grid-tile class="accorGrid">
+            <div class="accorTestbox">
+              <div class="labelstyle">
+                <label>Name</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+          </mat-grid-tile>
+          <mat-grid-tile class="accorGrid">
+            <div class="accorTestbox">
+              <div class="labelstyle">
+                <label>Street Num</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="text" required maxlength="11">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile class="accorGrid">
+            <div class="accorTestbox">
+              <div class="labelstyle">
+                <label>Trunk Num</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="text" required maxlength="11">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile class="accorGrid">
+            <div class="accorTestbox">
+              <div class="labelstyle">
+                <label>Street Info</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="number" required maxlength="11">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile class="accorGrid">
+            <div class="accorTestbox">
+              <div class="labelstyle">
+                <label>City</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="number" required maxlength="11">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile class="accorGrid">
+            <div class="accorTestbox">
+              <div class="labelstyle">
+                <label>Postal Code</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="number" required maxlength="11">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile class="accorGrid">
+            <div class="accorTestbox">
+              <div class="labelstyle">
+                <label>Activate Code</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="number" required maxlength="11">
+              </div>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <div style="margin-top: 35px ;">
+          <button class="accorButton">Update</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="accorButton"
+            style="background-color: #0078d4; color: white; border: 1px solid rgb(0, 120, 212)">Update</button>
+        </div>
+      </div>
     </mat-expansion-panel>
-    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header style="background-color: aqua;">
-        <mat-panel-title>
+    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+      hideToggle>
+      <mat-expansion-panel-header style="background-color: black;">
+        <mat-panel-title class="accorLabel">
+          <span class="material-icons">expand_more</span>
           Locations
         </mat-panel-title>
-        <!-- <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description> -->
       </mat-expansion-panel-header>
-
       <div class="row">
-        <mat-grid-list cols="2" rowHeight="80px">
+        <mat-grid-list cols="2" rowHeight="105px">
           <mat-grid-tile>
-            <div>
-            <div>
-              <label>Please Enter the Number</label>
-            </div>
-            <div style="height: 15px"></div>
-            <div>
-              <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
-            </div>
-          </div>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <div>
+            <div class="accorTestbox">
               <div>
-                <label>Please Enter the Number</label>
+                <label>Name</label>
               </div>
-              <div style="height: 15px"></div>
+              <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
-              </div>
-            </div>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <div>
-              <div>
-                <label>Please Enter the Number</label>
-              </div>
-              <div style="height: 15px"></div>
-              <div>
-                <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
-              </div>
-            </div>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <div>
-              <div>
-                <label>Please Enter the Number</label>
-              </div>
-              <div style="height: 15px"></div>
-              <div>
-                <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
-              </div>
-            </div>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <div>
-              <div>
-                <label>Please Enter the Number</label>
-              </div>
-              <div style="height: 15px"></div>
-              <div>
-                <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
-              </div>
-            </div>  
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <div>
-              <div>
-                <label>Please Enter the Number</label>
-              </div>
-              <div style="height: 15px"></div>
-              <div>
-                <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
+                <input class="accorTestbox" type="text">
               </div>
             </div>
           </mat-grid-tile>
         </mat-grid-list>
       </div>
     </mat-expansion-panel>
-    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header style="background-color: aqua;">
-        <mat-panel-title>
+
+    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+      hideToggle>
+      <mat-expansion-panel-header style="background-color: black;">
+        <mat-panel-title class="accorLabel">
+          <span class="material-icons">expand_more</span>
           Third Party Assignments
         </mat-panel-title>
-        <!-- <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description> -->
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+      <div class="row">
+        <mat-grid-list cols="2" rowHeight="105px">
+          <mat-grid-tile>
+            <div class="accorTestbox">
+              <div>
+                <label>Third Party Assignments</label>
+              </div>
+              <div style="height: 10px"></div>
+              <mat-form-field appearance="outline" style="width:100%">
+                <mat-select placeholder="Select an Option" disableOptionCentering>
+                  <mat-option *ngFor="let userOption of userList" [value]="userOption.value">
+                    {{userOption.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div>
+              <button class="accorButton2">Update</button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
     </mat-expansion-panel>
-    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header style="background-color: aqua;">
-        <mat-panel-title>
+    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+      hideToggle>
+      <mat-expansion-panel-header style="background-color: black;">
+        <mat-panel-title class="accorLabel">
+          <span class="material-icons">expand_more</span>
           Outbound Caller Name
         </mat-panel-title>
-        <!-- <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description> -->
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+      <div class="row">
+        <mat-grid-list cols="2" rowHeight="105px">
+          <mat-grid-tile>
+            <div class="accorTestbox">
+              <div>
+                <label>Name</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="text">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div>
+              <button class="accorButton1">Update</button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+      hideToggle>
+      <mat-expansion-panel-header style="background-color: black;">
+        <mat-panel-title class="accorLabel">
+          <span class="material-icons">expand_more</span>
+          International Calling Feature
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <mat-grid-list cols="2" rowHeight="105px">
+          <mat-grid-tile>
+            <div class="accorTestbox">
+              <div>
+                <label>International Calling Feature</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="text">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div>
+              <button class="accorButton1">Update</button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="accordianStyle" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+      hideToggle>
+      <mat-expansion-panel-header style="background-color: black;">
+        <mat-panel-title class="accorLabel">
+          <span class="material-icons">expand_more</span>
+          Network call forward
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <mat-grid-list cols="2" rowHeight="105px">
+          <mat-grid-tile>
+            <div class="accorTestbox">
+              <div>
+                <label>Network call forward</label>
+              </div>
+              <div style="height: 10px"></div>
+              <div>
+                <input class="accorTestbox" type="text">
+              </div>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div>
+              <button class="accorButton1">Update</button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
+</div>
 </div>

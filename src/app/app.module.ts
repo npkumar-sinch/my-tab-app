@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FormsModule,
     BrowserAnimationsModule,
     MatExpansionModule,
-    MatGridListModule
+    MatGridListModule,
+    MatIconModule,
+    MatSelectModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

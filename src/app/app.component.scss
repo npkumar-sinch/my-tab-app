@@ -1,23 +1,134 @@
-.space{
-height: 15px;
-}
-.value{
-    width: 12rem;
-    height: 25px;
+.space {
+  height: 15px;
 }
 
-.mat-mdc-form-field + .mat-mdc-form-field {
-    margin-left: 8px;
-  }
+.value {
+  width: 75%;
+  height: 25px;
+}
 
-  .accordianStyle {
-    margin-top: 0px !important; 
-    margin-bottom: 0px !important
-  }
+.mat-mdc-form-field+.mat-mdc-form-field {
+  margin-left: 8px;
+}
 
-  .accorTestbox {
-    width: 12rem;
-    height: 25px;
-  }
-  
-  
+.accordianStyle {
+  margin-top: 0px !important;
+  margin-bottom: 1px !important;
+}
+
+.accorTestbox {
+  width: 95%;
+  height: 28px;
+  position: absolute;
+  left: 0px;
+  margin-top: 0px;
+  margin-bottom: 3rem;
+}
+
+.accordianPosition {
+  margin: auto;
+  width: 65%;
+  padding: 10px;
+}
+
+.labelstyle {
+  margin-top: 4%;
+}
+
+.accorGrid {
+  margin-top: 10px !important;
+}
+
+.accorButton {
+  width: 20%;
+  height: 35px;
+  border-radius: 4px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.accorButton1 {
+  width: 10rem;
+  height: 30px;
+  border-radius: 4px;
+  color: white;
+  position: absolute;
+  left: 15px;
+  margin-top: -7px;
+  cursor: pointer;
+  background-color: #0078d4;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid rgb(0, 120, 212);
+}
+
+.accorLabel {
+  color: white;
+}
+
+.mat-expanded .mat-expansion-panel-header-title .material-icons {
+  transform: rotate(180deg);
+}
+
+.mat-expansion-panel-header-title .open,
+.mat-expanded .mat-expansion-panel-header-title .close {
+  display: inline-block;
+}
+
+.mat-expanded .mat-expansion-panel-header-title .open,
+.mat-expansion-panel-header-title .close {
+  display: none;
+}
+
+.accorButton2 {
+  width: 10rem;
+  height: 36px;
+  border-radius: 4px;
+  color: white;
+  position: absolute;
+  left: 15px;
+  margin-top: 0px;
+  cursor: pointer;
+  background-color: #0078d4;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid rgb(0, 120, 212);
+}
+.dataRow {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  border: #698eb0 solid 1px;
+  width: 100%;
+  margin-left: 0px;
+  height: 45px;
+  background-color: black;
+  color: white;
+}
+.dataRow1 {
+  display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    border: #c1c1c1 solid 1px;
+    width: 100%;
+    margin-left: 0px;
+    height: 35px;
+    background-color: none;
+    color : black;
+}
+.dataCol {
+  flex: 1;
+  padding: 6px 45px;
+  margin-top: 7px;
+  font-size: 14px;
+}
+.acccenter {
+  text-align: center;
+}
+.labelAcc{
+  margin: auto;
+    width: 75%;
+}
+.img {
+  border-radius: 50%;
+} 
