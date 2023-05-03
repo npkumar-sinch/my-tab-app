@@ -25,3 +25,24 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+
+## Steps For Running the Application
+
+-- Run `npm install` for dependencies 
+
+-- Application runs on `Express local server with Local Data`. Please find the url for download the LocalServer codes before  
+   running the Application. 
+
+   'https://github.com/npkumar-sinch/expressServer/tree/master'
+
+   For more Information on Express Server please find the ReadMe file.
+
+-- Run `npm start` to Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the 
+   source files.
+
+
+
+
