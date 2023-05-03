@@ -25,9 +25,11 @@ export class AppComponent {
     {value: 'tacos-2', viewValue: 'User1'}
   ];
   constructor(private http: HttpClient) {
+    this.login()
   }
 
   ngOnInit() {
+    this.login();
     microsoftTeams.app.initialize().then(() => {
       // Check the initial theme user chose and respect it
       microsoftTeams.app.getContext().then((context) => {
@@ -37,6 +39,7 @@ export class AppComponent {
         window.alert(error)
       });
     })
+   
   }
 
   login() {
@@ -59,7 +62,6 @@ export class AppComponent {
   }
 
   async onSubmitCall() {
-    this.login()
     let verifycode = this.mobilenumber;
     console.log("mobile",verifycode)
     if(verifycode != undefined && verifycode == "+(201)-970-9505" ){
