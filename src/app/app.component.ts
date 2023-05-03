@@ -31,7 +31,6 @@ export class AppComponent {
     microsoftTeams.app.initialize().then(() => {
       // Check the initial theme user chose and respect it
       microsoftTeams.app.getContext().then((context) => {
-        window.alert(JSON.stringify(context));
         this.details = JSON.stringify(context);
         console.log("Details", this.details)
       }).catch((error) => {
@@ -60,14 +59,25 @@ export class AppComponent {
   }
 
   async onSubmitCall() {
+    this.login()
     let verifycode = this.mobilenumber;
     console.log("mobile",verifycode)
-    if(verifycode != undefined){
-      console.log("number",this.mobilenumber)
+    if(verifycode != undefined && verifycode == "+(201)-970-9505" ){
+      console.log("number",this.mobilenumber);
       const data = {
-        tnMask: verifycode
+        privateKey: "",
+          tnSearchList: {
+            tnSearchItem: [
+              {
+                tnMask: verifycode
+              }
+            ]
+          },
+          pageSort: {
+            size: 1,
+            page: 1
+          }
       };
-      const apiUrl = '/Services/2.0.0/tnDetail';
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
       });
@@ -86,7 +96,7 @@ export class AppComponent {
       });
     }
     else{
-      window.alert("Please Enter the Value")
+      window.alert("Please check the Given Details")
     }
    
   }

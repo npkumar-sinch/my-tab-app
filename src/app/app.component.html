@@ -1,7 +1,7 @@
 <div>
   <div class="accordianPosition">
     <div class="accordianPosition" style="text-align: center; font-size: larger;">
-    <img style="height: 4rem;" src="../favicon.ico" alt="Avatar">
+    <img style="height: 4rem;" src="../assets/icon.ico" alt="Avatar">
   </div>
     <h1 class="acccenter">Welcome to SSO Login Application </h1>
   </div>
@@ -11,19 +11,19 @@
   <div class="space"></div>
   <div class="accordianPosition" style="text-align: center;" *ngIf=!showDetails>
     <div class="labelAcc">
-      <label>Please Enter the Number</label>
+      <label>Please Enter the Mobile Number</label>
     </div>
     <div style="height: 15px"></div>
     <div class="labelAcc">
-      <input class="value" type="text" [(ngModel)]="mobilenumber">
+      <input class="inpTextBox" type="text" [(ngModel)]="mobilenumber">
     </div>
-    <div style="height: 10px"></div>
+    <div style="height: 20px"></div>
     <button class="accorButton" (click)="onSubmitCall()">Submit</button>
   </div>
 </div>
 <div *ngIf="showDetails">
 <div class="accordianPosition" >
-  <h1 class="acccenter">value </h1>
+  <h1 class="acccenter">{{finaldata.userData.trunkcall}} </h1>
 </div>
 <div class="accordianPosition">
   <div class="dataRow">
@@ -33,9 +33,9 @@
     <h5 class="dataCol">COUNTRY</h5>
   </div>
   <div class="dataRow1">
-    <h5 class="dataCol">Column 1</h5>
-    <h5 class="dataCol">Column 2</h5>
-    <h5 class="dataCol">Column 2</h5>
+    <h5 class="dataCol">{{finaldata.userData.rateCenter}}</h5>
+    <h5 class="dataCol">{{finaldata.userData.province}}</h5>
+    <h5 class="dataCol">US</h5>
   </div>
 
 </div>
@@ -63,7 +63,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="number" required maxlength="11" [(ngModel)]="mobilenumber">
+                <input class="accorTestbox" type="text" [(ngModel)]="finaldata.userData.name">
               </div>
             </div>
           </mat-grid-tile>
@@ -76,7 +76,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" required maxlength="11">
+                <input class="accorTestbox" type="text"  [(ngModel)]="finaldata.userData.origStreetNum">
               </div>
             </div>
           </mat-grid-tile>
@@ -87,7 +87,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" required maxlength="11">
+                <input class="accorTestbox" type="text"  [(ngModel)]="finaldata.userData.trunkcall" disabled>
               </div>
             </div>
           </mat-grid-tile>
@@ -98,7 +98,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="number" required maxlength="11">
+                <input class="accorTestbox" type="text" [(ngModel)]="finaldata.userData.origStreetInfo">
               </div>
             </div>
           </mat-grid-tile>
@@ -109,7 +109,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="number" required maxlength="11">
+                <input class="accorTestbox" type="text" [(ngModel)]="finaldata.userData.origCity">
               </div>
             </div>
           </mat-grid-tile>
@@ -120,7 +120,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="number" required maxlength="11">
+                <input class="accorTestbox" type="text" [(ngModel)]="finaldata.userData.origPostalCode">
               </div>
             </div>
           </mat-grid-tile>
@@ -131,7 +131,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="number" required maxlength="11">
+                <input class="accorTestbox" type="text" [(ngModel)]="finaldata.userData.e911ActivateDate" disabled>
               </div>
             </div>
           </mat-grid-tile>
@@ -161,7 +161,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text">
+                <input class="accorTestbox" type="text" [(ngModel)]="finaldata.userData.name" disabled>
               </div>
             </div>
           </mat-grid-tile>
@@ -215,11 +215,11 @@
           <mat-grid-tile>
             <div class="accorTestbox">
               <div>
-                <label>Name</label>
+                <label>Outbound Caller Name</label>
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text">
+                <input class="accorTestbox" type="text" [(ngModel)]="finaldata.userData.callingname">
               </div>
             </div>
           </mat-grid-tile>
@@ -249,7 +249,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text">
+                <input class="accorTestbox" type="text" >
               </div>
             </div>
           </mat-grid-tile>
