@@ -178,37 +178,16 @@ export class AppComponent {
       'Content-Type': 'application/json',
     });
     this.http.post(`Services/2.0.0/tnFeatureOrder`, data, { headers }).subscribe((response) => {
-      this.userUpdateDetail = response;
-      console.log("num", this.userUpdateDetail);
-      if (this.userUpdateDetail.updateStatus.statusCode = "200") {
-        alert("Details are Updated");
-        // this.onSubmitCall();
-      }
-      else {
-        alert("Something Error Found")
-      }
+      // this.userUpdateDetail = response;
+      // console.log("num", this.userUpdateDetail);
+      this.finaldata = response;
+      this.finalDatatnList = this.finaldata.tnList
+      this.viewUserData = this.finalDatatnList.tnItem[0];
+      this.E911Services = this.viewUserData.tnFeature.e911;
     }, (error) => {
       console.error(error);
     });
   }
 
-  // getUpdateUserData() {
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   });
-  //   this.http.post(`https://services.inteliquent.com/Services/2.0.0/tnDetail`, { headers }).subscribe((response) => {
-  //     this.getUpdateData = response;
-  //     console.log("home", this.finaldata);
-  //     this.finaldata.userData.name = this.getUpdateData.name;
-  //     this.finaldata.userData.origCity = this.getUpdateData.origCity;
-  //     this.finaldata.userData.origState = this.getUpdateData.origCity;
-  //     this.finaldata.userData.trunkcall = this.getUpdateData.trunkcall
-  //   })
-  // }
 
-//   async userOutboundCaller(){
-// const data = {
-  
-// }
-//   }
 }
