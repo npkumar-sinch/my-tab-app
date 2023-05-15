@@ -71,14 +71,15 @@ export class AppComponent {
   async onSubmitCall() {
     let verifycode = this.mobilenumber;
     console.log("mobile", verifycode)
-    if (verifycode != undefined && verifycode == "+(201)-970-9505") {
+    if (verifycode != undefined && verifycode !== "") {
       console.log("number", this.mobilenumber);
       const data = {
         privateKey: "",
+        tnMask: verifycode,
         tnSearchList: {
           tnSearchItem: [
             {
-              tnMask: verifycode
+              tnMask: ""
             }
           ]
         },
@@ -93,17 +94,19 @@ export class AppComponent {
 
       this.http.post(`/Services/2.0.0/tnDetail`, data, { headers }).subscribe((response) => {
         this.finaldata = response;
+        if (this.finaldata.tnList.tnItem.length !== 0) {
+          this.showDetails = true;
+        }
+        else {
+          alert("Details Are not Found")
+        }
         this.finalDatatnList = this.finaldata.tnList
         this.viewUserData = this.finalDatatnList.tnItem[0];
         this.E911Services = this.viewUserData.tnFeature.e911;
         this.callerOutbound = this.viewUserData.tnFeature.callerId;
         console.log("getdata",this.viewUserData)
-        if (this.finaldata.statusCode = "200") {
-          this.showDetails = true;
-        }
-        else {
-          alert("details not found")
-        }
+      
+       
       }, (error) => {
         console.error(error);
       });
