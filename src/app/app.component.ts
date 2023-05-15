@@ -117,30 +117,29 @@ export class AppComponent {
   }
 
   async userValidation() {
-    let verifycode = this.mobilenumber;
-    if (verifycode == undefined || verifycode == "") {
-      window.alert("Please Enter the Value")
-    }
-    else {
       const data = {
         privateKey: "",
-        tn: verifycode,
-        name: this.finaldata.userData.name,
-        streetNum: this.finaldata.userData.origStreetNum,
-        streetInfo: this.finaldata.userData.origStreetInfo,
-        city: this.finaldata.userData.origCity,
-        state: this.finaldata.userData.origState,
-        postalCode: this.finaldata.userData.origPostalCode,
-        location: "Remote Location 1"
-      };
-      console.log("payload", data, data.tn)
+        tnFeatureOrder: {
+          tnList: {
+            tn: this.mobilenumber,
+            name: this.E911Services.name,
+            streetNum: this.E911Services.origStreetNum,
+            streetInfo: this.E911Services.origStreetInfo,
+            city: this.E911Services.origCity,
+            state: this.E911Services.origState,
+            postalCode: this.E911Services.origPostalCode,
+            location: "Remote Location 1"
+          }
+        }
+      }
+      console.log("payload", data)
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
       });
       this.http.post(`Services/2.0.0/tnE911Validate`, data, { headers }).subscribe((response) => {
         this.userValidData = response;
-        console.log("num", this.finaldata);
-        if (this.userValidData.Validation.statusCode = "200") {
+        console.log("num", this.userValidData);
+        if (this.userValidData.statusCode = "200") {
           alert("Given Details are Validated")
         }
         else {
@@ -150,7 +149,6 @@ export class AppComponent {
         console.error(error);
       });
     }
-  }
 
   async UserE911ServiceUpdate() {
     const data = {
@@ -177,6 +175,7 @@ export class AppComponent {
         }
       }
     }
+    console.log("payloaddata",data)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -184,9 +183,19 @@ export class AppComponent {
       // this.userUpdateDetail = response;
       // console.log("num", this.userUpdateDetail);
       this.finaldata = response;
+      if(this.finaldata.page == 1){
+        alert("Given Details are Updated");
+        this.showDetails = false;
+      }
+      else {
+        alert ("Something Went Wrong")
+       
+      }
+      console.log("updateresponse",response)
       this.finalDatatnList = this.finaldata.tnList
       this.viewUserData = this.finalDatatnList.tnItem[0];
       this.E911Services = this.viewUserData.tnFeature.e911;
+      this.E911Services.origCity = this.viewUserData.tnFeature.e911.origCity
     }, (error) => {
       console.error(error);
     });
