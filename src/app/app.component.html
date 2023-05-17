@@ -52,6 +52,11 @@
         <mat-panel-title class="accorLabel">
           <span class="material-icons">expand_more</span>
           E911 Services
+          <span></span>
+          <label class="switch">
+            <input type="checkbox" id="myCheckbox" (change)="handleE911Change($event)">
+            <span class="slider round"></span>
+          </label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="row">
@@ -63,7 +68,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.name">
+                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.name" [disabled]="hideE911Accordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -76,7 +81,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text"  [(ngModel)]="E911Services.origStreetNum">
+                <input class="accorTestbox" type="text"  [(ngModel)]="E911Services.origStreetNum" [disabled]="hideE911Accordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -87,7 +92,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text"  [(ngModel)]="mobilenumber">
+                <input class="accorTestbox" type="text"  [(ngModel)]="mobilenumber" [disabled]="hideE911Accordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -98,7 +103,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origStreetInfo">
+                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origStreetInfo" [disabled]="hideE911Accordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -109,7 +114,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origCity">
+                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origCity" [disabled]="hideE911Accordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -120,7 +125,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origPostalCode">
+                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origPostalCode" [disabled]="hideE911Accordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -150,6 +155,10 @@
         <mat-panel-title class="accorLabel">
           <span class="material-icons">expand_more</span>
           Locations
+          <label class="switch">
+            <input type="checkbox" id="myCheckbox" (change)="handlelocationChange($event)">
+            <span class="slider round"></span>
+          </label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="row">
@@ -161,7 +170,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origStreetInfo">
+                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origStreetInfo" [disabled]="hideLocationAccordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -172,7 +181,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origCity">
+                <input class="accorTestbox" type="text" [(ngModel)]="E911Services.origCity" [disabled]="hideLocationAccordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -186,6 +195,10 @@
         <mat-panel-title class="accorLabel">
           <span class="material-icons">expand_more</span>
           Third Party Assignments
+          <label class="switch">
+            <input type="checkbox" id="myCheckbox" (change)="handlethirdPartyChange($event)">
+            <span class="slider round"></span>
+          </label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="row">
@@ -197,7 +210,7 @@
               </div>
               <div style="height: 10px"></div>
               <mat-form-field appearance="outline" style="width:100%">
-                <mat-select placeholder="Select an Option" disableOptionCentering>
+                <mat-select placeholder="Select an Option" disableOptionCentering [disabled]="hidethirdPartyAccordian">
                   <mat-option *ngFor="let userOption of userList" [value]="userOption.value">
                     {{userOption.viewValue}}
                   </mat-option>
@@ -219,6 +232,10 @@
         <mat-panel-title class="accorLabel">
           <span class="material-icons">expand_more</span>
           Outbound Caller Name
+          <label class="switch">
+            <input type="checkbox" id="myCheckbox" (change)="handleoutboundChange($event)">
+            <span class="slider round"></span>
+          </label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="row">
@@ -230,13 +247,13 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="callerOutbound.callingName">
+                <input class="accorTestbox" type="text" [(ngModel)]="callerOutbound.callingName" [disabled]="hideOutboundAccordian">
               </div>
             </div>
           </mat-grid-tile>
           <mat-grid-tile>
             <div>
-              <button class="accorButton1">Update</button>
+              <button class="accorButton1" (click)="updateCaller()">Update</button>
             </div>
           </mat-grid-tile>
         </mat-grid-list>
@@ -249,6 +266,10 @@
         <mat-panel-title class="accorLabel">
           <span class="material-icons">expand_more</span>
           International Calling Feature
+          <label class="switch">
+            <input type="checkbox" id="myCheckbox" (change)="handleCallFeatureChange($event)">
+            <span class="slider round"></span>
+          </label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="row">
@@ -260,7 +281,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" >
+                <input class="accorTestbox" type="text" [disabled]="hideCallFeatureAccordian">
               </div>
             </div>
           </mat-grid-tile>
@@ -279,6 +300,10 @@
         <mat-panel-title class="accorLabel">
           <span class="material-icons">expand_more</span>
           Network call forward
+          <label class="switch">
+            <input type="checkbox" id="myCheckbox" (change)="handleNetworkcallChange($event)">
+            <span class="slider round"></span>
+          </label>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="row">
@@ -290,7 +315,7 @@
               </div>
               <div style="height: 10px"></div>
               <div>
-                <input class="accorTestbox" type="text" [(ngModel)]="viewUserData.callForwardingTo">
+                <input class="accorTestbox" type="text" [(ngModel)]="viewUserData.callForwardingTo" [disabled]="hideNetworkAccordian">
               </div>
             </div>
           </mat-grid-tile>
